@@ -1,3 +1,10 @@
+/**
+ * @file
+ * @author LinnYoung (946692837@qq.com)
+ * @date 2020年5月12日
+ * @description synchronize XXX  to XXX.
+ */
+
 const fs = require("fs");
 
 /**
@@ -17,7 +24,7 @@ function fetchFiles(src, dst) {
 
   // 目标目录的文件与资源路径的文件作 对比
   let pathNames = [];
-  paths.forEach(item => {
+  paths.forEach((item) => {
     pathNames.push(item.split(".")[0]);
   }); // 去掉文件格式（后缀名）
   let redundantFiles = [];
@@ -32,11 +39,11 @@ function fetchFiles(src, dst) {
 
   // 删除目录中的文件或者文件
   console.log("待删除文件：", redundantFiles);
-  redundantFiles.forEach(path => {
-    // deldir(path);
+  redundantFiles.forEach((path) => {
+    deldir(path);
   });
 
-  paths.forEach(path => {
+  paths.forEach((path) => {
     let _src = src + "/" + path;
     let _dst = dst + "/" + path;
     let stat = fs.statSync(_src);
@@ -61,7 +68,7 @@ function exists(src, dst, callback) {
   if (exists) {
     callback(src, dst);
   } else {
-    fs.mkdir(dst, function() {
+    fs.mkdir(dst, function () {
       callback(src, dst);
     });
   }
@@ -88,7 +95,6 @@ function deldir(src) {
     }
   }
 }
-
 
 // 美术目录路径
 const srca = "/opt/work/ef/arts/NEW_UI/res/Item/";
