@@ -51,7 +51,7 @@ function fetchFiles(src, dst) {
       readable = fs.createReadStream(_src);
       writeable = fs.createWriteStream(_dst);
       readable.pipe(writeable);
-    } else if (stat && stat.isDirectory) {
+    } else if (stat && stat.isDirectory()) {
       exists(_src, _dst, fetchFiles);
     }
   });
